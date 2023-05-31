@@ -20,7 +20,7 @@ requests==2.31.0
 SQLAlchemy==2.0.13
 typing_extensions==4.5.0
 urllib3==2.0.2
-Werkzeug==2.3.4
+Werkzeug==2.2.3
 WTForms==3.0.1
 WTForms-SQLAlchemy==0.3
 yarg==0.1.9
