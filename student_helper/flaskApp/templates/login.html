@@ -1,0 +1,73 @@
+<head>
+    <!DOCTYPE html>
+    <html lang="ru">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">    
+</head>
+<body>
+    <div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                    {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="form-container form-container_login">
+            <form method="POST" action="" class="form_login">
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group form-group-grid">
+                    <legend class="form__legend">Войти</legend>
+                    <div class="form-group">
+                        {{ form.username.label(class="") }}
+                        {% if form.username.errors %}
+                            {{ form.username(class="") }}
+                            <div>
+                                {% for error in form.username.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.username(class="") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.password.label(class="") }}
+                        {% if form.password.errors %}
+                            {{ form.password(class="") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.password.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.password(class="") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-check">
+                        {{ form.remember(class="") }}
+                        {{ form.remember.label(class="") }}
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    {{ form.submit(class="button") }}
+                </div>
+                <!-- <small class="text-muted ml-2">
+                    <a href="#">Забыли пароль?</a>
+                </small> -->
+            </form>
+        </div>
+        <div class="button-holder">
+            <div class="buton-holder__center button-holder__center_login">
+                <small>
+                    Нужен аккаунт? Напиши в контакты</a>
+                </small>
+            </div>
+        </div>
+    </div>
+</body>
